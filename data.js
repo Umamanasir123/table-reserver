@@ -1,0 +1,123 @@
+// ============================================================
+// MOCK DATA — La Maison Restaurant
+// ============================================================
+
+// Table definitions — layout positions are for SVG floor plan
+const TABLES = [
+  // === Wine Cellar Zone ===
+  { id: 'T1',  number: 1,  zone: 'Wine Cellar',  seats: 2,  status: 'available', x: 60,  y: 60,  w: 70, h: 50 },
+  { id: 'T2',  number: 2,  zone: 'Wine Cellar',  seats: 2,  status: 'reserved',  x: 60,  y: 130, w: 70, h: 50 },
+  { id: 'T3',  number: 3,  zone: 'Wine Cellar',  seats: 4,  status: 'available', x: 160, y: 60,  w: 80, h: 60 },
+  { id: 'T4',  number: 4,  zone: 'Wine Cellar',  seats: 4,  status: 'reserved',  x: 160, y: 140, w: 80, h: 60 },
+
+  // === Main Dining Room ===
+  { id: 'T5',  number: 5,  zone: 'Main Dining',  seats: 4,  status: 'available', x: 310, y: 55,  w: 80, h: 60 },
+  { id: 'T6',  number: 6,  zone: 'Main Dining',  seats: 6,  status: 'reserved',  x: 420, y: 55,  w: 90, h: 65 },
+  { id: 'T7',  number: 7,  zone: 'Main Dining',  seats: 8,  status: 'available', x: 310, y: 145, w: 200, h: 65 },
+  { id: 'T8',  number: 8,  zone: 'Main Dining',  seats: 4,  status: 'available', x: 310, y: 235, w: 80, h: 60 },
+  { id: 'T9',  number: 9,  zone: 'Main Dining',  seats: 4,  status: 'reserved',  x: 420, y: 235, w: 80, h: 60 },
+  { id: 'T10', number: 10, zone: 'Main Dining',  seats: 2,  status: 'available', x: 540, y: 145, w: 65, h: 50 },
+  { id: 'T11', number: 11, zone: 'Main Dining',  seats: 2,  status: 'available', x: 540, y: 215, w: 65, h: 50 },
+
+  // === Terrace Zone ===
+  { id: 'T12', number: 12, zone: 'Terrace',      seats: 2,  status: 'available', x: 640, y: 55,  w: 70, h: 50 },
+  { id: 'T13', number: 13, zone: 'Terrace',      seats: 2,  status: 'available', x: 640, y: 125, w: 70, h: 50 },
+  { id: 'T14', number: 14, zone: 'Terrace',      seats: 4,  status: 'reserved',  x: 730, y: 55,  w: 80, h: 60 },
+  { id: 'T15', number: 15, zone: 'Terrace',      seats: 4,  status: 'available', x: 730, y: 135, w: 80, h: 60 },
+  { id: 'T16', number: 16, zone: 'Terrace',      seats: 6,  status: 'available', x: 640, y: 210, w: 170, h: 65 },
+];
+
+// Pre-existing reservations (today's mock data)
+const today = new Date().toISOString().split('T')[0];
+const RESERVATIONS = [
+  {
+    id: 'R001',
+    tableId: 'T2',
+    tableNumber: 2,
+    zone: 'Wine Cellar',
+    guestName: 'Isabelle Fontaine',
+    email: 'i.fontaine@email.com',
+    phone: '+1 (310) 555-0201',
+    date: today,
+    time: '7:00 PM',
+    guests: 2,
+    occasion: 'Anniversary',
+    notes: 'Champagne on arrival, please.',
+    status: 'confirmed',
+  },
+  {
+    id: 'R002',
+    tableId: 'T4',
+    tableNumber: 4,
+    zone: 'Wine Cellar',
+    guestName: 'Marcus Webb',
+    email: 'm.webb@corp.com',
+    phone: '+1 (212) 555-0399',
+    date: today,
+    time: '12:00 PM',
+    guests: 4,
+    occasion: 'Business Dinner',
+    notes: 'Quiet table preferred. One guest is vegetarian.',
+    status: 'seated',
+  },
+  {
+    id: 'R003',
+    tableId: 'T6',
+    tableNumber: 6,
+    zone: 'Main Dining',
+    guestName: 'Sofia & David Moreau',
+    email: 'dmoreau@home.net',
+    phone: '+1 (415) 555-0812',
+    date: today,
+    time: '8:00 PM',
+    guests: 6,
+    occasion: 'Birthday',
+    notes: 'Birthday cake for Sofia — chocolate, please inform kitchen.',
+    status: 'confirmed',
+  },
+  {
+    id: 'R004',
+    tableId: 'T9',
+    tableNumber: 9,
+    zone: 'Main Dining',
+    guestName: 'Theo Nakamura',
+    email: 'theo.n@studio.io',
+    phone: '+1 (617) 555-0044',
+    date: today,
+    time: '1:00 PM',
+    guests: 3,
+    occasion: 'None',
+    notes: '',
+    status: 'completed',
+  },
+  {
+    id: 'R005',
+    tableId: 'T14',
+    tableNumber: 14,
+    zone: 'Terrace',
+    guestName: 'Amara Osei',
+    email: 'a.osei@work.com',
+    phone: '+1 (718) 555-0766',
+    date: today,
+    time: '7:30 PM',
+    guests: 4,
+    occasion: 'Date Night',
+    notes: 'Window seating if possible.',
+    status: 'confirmed',
+  },
+  {
+    id: 'R006',
+    tableId: 'T9',
+    tableNumber: 9,
+    zone: 'Main Dining',
+    guestName: 'Laurent Dubois',
+    email: 'l.dubois@paris.fr',
+    phone: '+33 1 55 00 12 34',
+    date: today,
+    time: '8:30 PM',
+    guests: 2,
+    occasion: 'None',
+    notes: 'Nut allergy — very serious.',
+    status: 'pending',
+  },
+];
